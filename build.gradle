@@ -210,7 +210,7 @@ tasks.named('processResources', ProcessResources).configure {
             create_version_range: create_version_range
     ]
     inputs.properties replaceProperties
-
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]
     }
@@ -255,4 +255,11 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+sourceSets {
+    main {
+        resources {
+            srcDirs += 'src/generated/resources'
+        }
+    }
 }
