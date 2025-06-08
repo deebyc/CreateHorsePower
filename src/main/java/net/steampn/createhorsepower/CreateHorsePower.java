@@ -43,7 +43,7 @@ public class CreateHorsePower {
         TileEntityRegister.register();
         modEventBus.addListener(this::commonSetup);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC, "createhorsepower-common.toml");
 
         MinecraftForge.EVENT_BUS.register(this);
     }

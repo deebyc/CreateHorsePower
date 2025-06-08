@@ -11,6 +11,10 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.steampn.createhorsepower.registry.BlockRegister;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.TrueCondition;
+
+import static mezz.jei.api.ingredients.subtypes.UidContext.Ingredient;
 
 public class CHPRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public CHPRecipeProvider(PackOutput packOutput){

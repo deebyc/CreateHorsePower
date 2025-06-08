@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.steampn.createhorsepower.config.Config;
-import net.steampn.createhorsepower.registry.BlockRegister;
 import org.slf4j.Logger;
 
 public class HorseCrankTileEntity extends GeneratingKineticBlockEntity {
@@ -44,6 +43,7 @@ public class HorseCrankTileEntity extends GeneratingKineticBlockEntity {
   private float lastGeneratedSpeed = 0;
   public float generatedSpeed = 4;
   private float lastSpeed = 0;
+
 
   public HorseCrankTileEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
     super(type, pos, state);
@@ -179,7 +179,7 @@ public class HorseCrankTileEntity extends GeneratingKineticBlockEntity {
     double bx = pos.getX();
     double by = pos.getY();
     double bz = pos.getZ();
-    // add 0.5D so that we're targetting the center of the block, as blockPos selects a corner by default
+    // add 0.5D so that we're targeting the center of the block, as blockPos selects a corner by default
     bx += 0.5D;
     bz += 0.5D;
 

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": [],
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "F": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    "AFA",
+    "ACA",
+    "SSS"
+  ],
+  "result": {
+    "item": "createhorsepower:horse_crank"
+  },
+  "show_notification": true
+}
