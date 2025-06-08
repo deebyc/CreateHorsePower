@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 import net.minecraft.core.BlockPos;
@@ -18,6 +19,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.WalkAnimationState;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.decoration.LeashFenceKnotEntity;
 import net.minecraft.world.level.block.Block;
@@ -64,7 +66,18 @@ public class HorseCrankTileEntity extends GeneratingKineticBlockEntity {
 
   @Override
   public float getGeneratedSpeed() {
-    return !this.getBlockState().getValue(HAS_WORKER) ? 0.0F : this.generatedSpeed * rpmModifier;
+    if (!this.getBlockState().getValue(HAS_WORKER)) {
+      return 0.0F;
+    }
+
+    double workerSpeed = Optional.ofNullable(this.getWorkerMob())
+      .map(m -> m.getAttribute(Attributes.MOVEMENT_SPEED))
+      .map(a -> a.getValue())
+      .map(Double::doubleValue)
+      .map(v -> v * 4.0)
+      .orElse(1.0);
+
+    return this.generatedSpeed * this.rpmModifier * (float) workerSpeed;
   }
 
   @Override
@@ -79,6 +92,15 @@ public class HorseCrankTileEntity extends GeneratingKineticBlockEntity {
     else if(state.getValue(LARGE_WORKER_STATE)) capacity = Config.large_creature_stress;
 
     capacity = Math.abs(capacity / Math.abs(getGeneratedSpeed()));
+
+    double workerStrength = Optional.ofNullable(this.getWorkerMob())
+      .map(m -> m.getAttribute(Attributes.JUMP_STRENGTH))
+      .map(a -> a.getValue())
+      .map(Double::doubleValue)
+      .map(v -> v * 1.75)
+      .orElse(1.0);
+
+    capacity *= workerStrength;
 
     this.lastCapacityProvided = capacity;
     return capacity;
