@@ -20,6 +20,7 @@ build
 # other
 eclipse
 run
+.vscode/
 
 # Files from Forge MDK
 forge*changelog.txt
@@ -29,3 +30,4 @@ run
 run-data
 test
 .DS_Store
+src/generated
