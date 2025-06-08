@@ -28,7 +28,7 @@ public class CHPRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("ACA")
                 .pattern("SSS")
                 .define('A', Blocks.AIR)
-                .define('F',ItemTags.WOODEN_FENCES)
+                .define('F', ItemTags.WOODEN_FENCES)
                 .define('C', AllBlocks.COGWHEEL.get())
                 .define('S', Blocks.STONE)
                 .unlockedBy(getHasName(AllBlocks.COGWHEEL.get()), has(AllBlocks.COGWHEEL.get()))
