@@ -151,7 +151,7 @@ public class HorseCrankBlock extends KineticBlock implements ICogWheel, IBE<Hors
                     .setValue(LARGE_WORKER_STATE, large);
 
             level.setBlock(pos, updatedState, 3);
-            player.displayClientMessage(Component.translatable("tooltip.createhorsepower.horse_crank.attached"), true);
+            player.displayClientMessage((Component.translatable("tooltip.createhorsepower.horse_crank.attached")), true);
             return InteractionResult.sidedSuccess(level.isClientSide);
 
 

@@ -131,6 +131,20 @@ public class HorseCrankTileEntity extends GeneratingKineticBlockEntity {
     if (level == null || level.isClientSide()) {
       return;
     }
+    boolean hadWorker = getBlockState().getValue(HAS_WORKER);
+    boolean hasWorkerNow = getWorkerMob() != null;
+
+    if (hadWorker != hasWorkerNow) {
+      BlockState updated = getBlockState().setValue(HAS_WORKER, hasWorkerNow);
+      level.setBlock(worldPosition, updated, 3);
+
+      if (!hasWorkerNow) {
+        this.detachKinetics();
+        this.lastCapacityProvided = 0f;
+      } else {
+        this.attachKinetics();
+      }
+    }
 
     Block[] blockTypeGrid = getValidSurroundingPathBlocks();
     Set<Block> blockSet = surroundingValidBlocksSet(blockTypeGrid);
