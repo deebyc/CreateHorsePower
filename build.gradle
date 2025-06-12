@@ -260,7 +260,7 @@ tasks.withType(JavaCompile).configureEach {
 sourceSets {
     main {
         resources {
-            srcDirs += 'src/generated/resources'
+            srcDirs += 'src/main/resources'
         }
     }
 }
