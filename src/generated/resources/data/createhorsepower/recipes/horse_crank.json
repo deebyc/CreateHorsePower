@@ -2,7 +2,6 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": [],
     "C": {
       "item": "create:cogwheel"
     },
@@ -14,8 +13,8 @@
     }
   },
   "pattern": [
-    "AFA",
-    "ACA",
+    " F ",
+    " C ",
     "SSS"
   ],
   "result": {

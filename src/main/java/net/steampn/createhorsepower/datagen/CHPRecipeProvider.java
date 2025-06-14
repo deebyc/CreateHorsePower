@@ -24,10 +24,9 @@ public class CHPRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegister.HORSE_CRANK.get())
-                .pattern("AFA")
-                .pattern("ACA")
+                .pattern(" F ")
+                .pattern(" C ")
                 .pattern("SSS")
-                .define('A', Blocks.AIR)
                 .define('F', ItemTags.WOODEN_FENCES)
                 .define('C', AllBlocks.COGWHEEL.get())
                 .define('S', Blocks.STONE)
